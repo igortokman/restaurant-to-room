@@ -1,5 +1,6 @@
 module.exports = function() {
   var passport = require('passport');
+  var bcrypt = require('bcrypt');
   var passportLocal = require('passport-local');
   var userService = require('../services/user-service');
 
@@ -8,10 +9,18 @@ module.exports = function() {
       if (err) {
         return next(err);
       }
-      if (!user || user.password !== password) {
+      if (!user) {
         return next(null, null);
       }
-      next(null, user);
+      bcrypt.compare(password, user.password, function(err, same) {
+        if (err) {
+          return next(err);
+        }
+        if (!same) {
+          return next(null, null);
+        }
+        next(null, user);
+      });
     });
   }));
 
