@@ -35,10 +35,11 @@ router.post('/create', function(req, res, next) {
 });
 
 router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/users' }),
-  function(req, res) {
-    res.redirect('/orders');
-  });
+  passport.authenticate('local', {
+    failureRedirect: '/',
+    successRedirect: '/orders',
+    failureFlash: 'Invalid credentials'
+  }));
 
 router.get('/logout', function(req, res, next) {
   req.logout();
