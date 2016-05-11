@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 var userService = require('../services/user-service');
 
 
@@ -31,5 +32,11 @@ router.post('/create', function(req, res, next) {
     res.redirect('/orders');
   });
 });
+
+router.post('/login',
+  passport.authenticate('local', { failureRedirect: '/users' }),
+  function(req, res) {
+    res.redirect('/orders');
+  });
 
 module.exports = router;
