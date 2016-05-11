@@ -6,8 +6,9 @@ router.get('/', restrict, function(req, res, next) {
   if (!req.isAuthenticated()) {
     return res.redirect('/');
   }
-  var vm = {
+   var vm = {
     title: 'Place an order',
+    orderId: req.session.orderId,
     firstName: req.user ? req.user.firstName : null
   };
 
