@@ -12,9 +12,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/create', function(req, res, next) {
   var vm = {
-    title: 'create an account'
+    title: 'Create an account'
   };
-
   res.render('users/create', vm);
 });
 
@@ -29,7 +28,9 @@ router.post('/create', function(req, res, next) {
       delete vm.input.password;
       return res.render('users/create', vm);
     }
-    res.redirect('/orders');
+    req.login(req.body, function(err) {
+      res.redirect('/orders');
+    });
   });
 });
 
@@ -38,5 +39,10 @@ router.post('/login',
   function(req, res) {
     res.redirect('/orders');
   });
+
+router.get('/logout', function(req, res, next) {
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = router;
