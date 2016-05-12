@@ -1,0 +1,22 @@
+{
+  "name": "workspace",
+  "description": "",
+  "main": "",
+  "authors": [
+    "IgorTokman <igortokman1994@ukr.net>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/IgorTokman/restaurant-to-room",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5"
+  }
+}
