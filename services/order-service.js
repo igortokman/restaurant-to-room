@@ -26,3 +26,12 @@ exports.getRestaurants = function(next) {
     next(null, restaurants);
   });
 };
+
+exports.getRestaurantDetails = function(restId, next) {
+  api.restaurant_details({rid: restId}, function(err, details) {
+    if (err) {
+      console.log(err);
+    }
+    next(err, details);
+  });
+};
