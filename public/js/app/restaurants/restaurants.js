@@ -5,7 +5,21 @@
     .module('app')
     .controller('RestaurantsController', RestaurantsController);
 
-    function RestaurantsController() {
-      this.data = 'the data'; // use {{vm.data}} in the view
+    RestaurantsController.$inject = ['$http'];
+
+    function RestaurantsController($http) {
+      var vm = this;
+
+      $http.get('/orders/api/restaurants')
+        .then(function(response) {
+          vm.restaurants = response.data
+        },
+        function(reason) {
+          console.log(reason);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
     }
+
 }());
