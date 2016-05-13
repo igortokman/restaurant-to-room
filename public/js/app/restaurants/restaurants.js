@@ -7,7 +7,7 @@
 
      RestaurantsController.$inject = ['api'];
 
-    function RestaurantsController($http) {
+    function RestaurantsController(api) {
       var vm = this;
 
       api.getRestaurants()

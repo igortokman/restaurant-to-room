@@ -14,16 +14,16 @@
     };
 
     function getRestaurants() {
-      return $http.get('/orders/api/restaurants')
+      return $http.get('/js/app/services/data/data.json')
         .then(function(response) {
           return response.data;
         });
     }
 
     function getRestaurantDetails(restId) {
-      return $http.get('/orders/api/restaurant-details/' + restId)
+      return $http.get('/js/app/services/data/data.json')
         .then(function(response) {
-          return response.data;
+          return response.data[restId];
         });
     }
   }

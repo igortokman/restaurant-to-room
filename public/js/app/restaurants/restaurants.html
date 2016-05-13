@@ -5,7 +5,7 @@
   <strong ng-show="!vm.restaurants">Loading...</strong>
   <ul>
     <li ng-repeat="rest in vm.restaurants | orderBy: 'na'">
-      <a ng-href="#/menu/{{rest.id}}">
+      <a ng-href="#/menu/{{ $index }}">
         <strong ng-bind="rest.na"></strong> <span ng-bind="'(' + rest.cu + ')'"></span>
       </a>
     </li>
