@@ -24,6 +24,8 @@ mongoose.connect(config.mongoUri);
 
 var app = express();
 
+//app.set('production', process.env === 'production');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
